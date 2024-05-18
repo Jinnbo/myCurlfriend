@@ -10,17 +10,16 @@ load_dotenv()
 client = OpenAI()
 
 #File that uses GPT API to create the text that the Eleven API will read
-def textWriter(text):
+def textWriter(text: str):
 
-    # completion = client.chat.completions.create(
-    # model="gpt-3.5-turbo",
-    # messages=[
-    #     {"role": "system", "content": "You are a helpful assistant"},
-    #     {"role": "user", "content": "What is 2+2?"}
-    # ]
-    # )
+    completion = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant"},
+        {"role": "user", "content": text}
+    ]
+    )
 
-    # print(completion.choices[0].message)
-    return text
-
-textWriter("magaya")
+    print(completion.choices[0].message.content)
+    # return text
+    return completion.choices[0].message.content

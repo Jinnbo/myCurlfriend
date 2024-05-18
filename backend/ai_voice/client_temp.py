@@ -8,6 +8,6 @@ while True:
     if inputtext == "stop":
         break
     else:
-        #text = text_writer.textWriter(inputtext)
-        voice.text_to_speech_file(inputtext)
+        text = text_writer.textWriter(inputtext)
+        voice.text_to_speech_file(text)
         audio_player.playAudio()
