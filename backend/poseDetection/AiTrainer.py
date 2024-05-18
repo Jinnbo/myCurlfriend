@@ -2,14 +2,16 @@ import PoseModule as pm
 import time
 import numpy as np
 import cv2
+
 cap = cv2.VideoCapture(1)
 detector = pm.poseDetector()
 count = 0
 dir = 0
 pTime = 0
+startTime = time.time()
 
 with open("../curl_angle_count.txt", "w") as f:
-    f.write("angle, count\n")
+    f.write("angle,count,time\n")
 
 while True:
     success, img = cap.read()
@@ -18,6 +20,7 @@ while True:
     img = detector.findPose(img, False)
     lmList = detector.findPosition(img, False)
     # print(lmList)
+    
     if len(lmList) != 0:
         # Right Arm
         angle = detector.findAngle(img, 12, 14, 16)
@@ -39,10 +42,8 @@ while True:
                 count += 0.5
                 dir = 0
 
-
-
         with open("../curl_angle_count.txt", "a") as f:
-            f.write(f"{angle},{count}\n")
+            f.write(f"{angle},{count},{time.time() - startTime}\n")
         
         # Draw Bar
         cv2.rectangle(img, (1100, 100), (1175, 650), color, 3)
