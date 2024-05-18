@@ -2,8 +2,13 @@ import time
 from pygame import mixer
 import os
 import uuid
+import audio_player
 from elevenlabs import VoiceSettings
 from elevenlabs.client import ElevenLabs
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Access the API key from the environment variable
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
@@ -14,7 +19,7 @@ client = ElevenLabs(
 def text_to_speech_file(text: str) -> str:
     # Calling the text_to_speech conversion API with detailed parameters
     response = client.text_to_speech.convert(
-        voice_id="AZnzlk1XvdvUeBnXmlld", # Adam pre-made voice
+        voice_id="AZnzlk1XvdvUeBnXmlld",
         optimize_streaming_latency="0",
         output_format="mp3_22050_32",
         text=text,
