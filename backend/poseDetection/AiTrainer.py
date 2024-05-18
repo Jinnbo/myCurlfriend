@@ -2,11 +2,15 @@ import PoseModule as pm
 import time
 import numpy as np
 import cv2
-cap = cv2.VideoCapture("assets/curl.mp4")
+cap = cv2.VideoCapture(1)
 detector = pm.poseDetector()
 count = 0
 dir = 0
 pTime = 0
+
+with open("../curl_angle_count.txt", "w") as f:
+    f.write("angle, count\n")
+
 while True:
     success, img = cap.read()
     img = cv2.resize(img, (1280, 720))
@@ -34,7 +38,12 @@ while True:
             if dir == 1:
                 count += 0.5
                 dir = 0
-        print(count)
+
+
+
+        with open("../curl_angle_count.txt", "a") as f:
+            f.write(f"{angle},{count}\n")
+        
         # Draw Bar
         cv2.rectangle(img, (1100, 100), (1175, 650), color, 3)
         cv2.rectangle(img, (1100, int(bar)), (1175, 650), color, cv2.FILLED)
