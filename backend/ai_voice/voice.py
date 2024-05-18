@@ -32,7 +32,7 @@ def text_to_speech_file(text: str) -> str:
 
     # Generating a unique file name for the output MP3 file
     # save_file_path = f"{uuid.uuid4()}.mp3"
-    save_file_path = "tempVoice.mp3"
+    save_file_path = "backend/ai_voice/audio/tempVoice.mp3"
 
     # Writing the audio to a file
     with open(save_file_path, "wb") as f:
@@ -44,15 +44,3 @@ def text_to_speech_file(text: str) -> str:
 
     # Return the path of the saved audio file
     return save_file_path
-
-
-text_to_speech_file("Hello... I am a voice")
-
-
-mixer.init()
-mixer.music.load("tempVoice.mp3")
-mixer.music.play()
-while mixer.music.get_busy():  # wait for music to finish playing
-    time.sleep(1)
-
-print("Finished!")
