@@ -1,11 +1,17 @@
 // ButtonComponent.js
-import React from 'react';
-import './style.css';
+import React from "react";
+import "./style.css";
 
-function Anime_Button({field, name}){
+function AnimeButton({ field, name, onClick }) {
   return (
-    <a class="btn" href="#">{name}</a>
+    <button
+      className="anime-button"
+      class="btn"
+      onClick={() => onClick(field, name)}
+    >
+      {name}
+    </button>
   );
 }
 
-export default Anime_Button;
+export default AnimeButton;
