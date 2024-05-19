@@ -17,6 +17,10 @@ class AngleCalculationStrategy(ABC):
     def key_landmarks(self):
         pass
 
+    @abstractmethod
+    def display_data(self, img, lmList, angle_data):
+        pass
+
 # Concrete Strategy for Squats
 
 
@@ -132,7 +136,7 @@ class CurlAngleStrategy(AngleCalculationStrategy):
         if angle < 0:
             angle += 360
 
-        return angle
+        return (angle,angle)
 
     @property
     def key_landmarks(self):
@@ -145,17 +149,17 @@ class CurlAngleStrategy(AngleCalculationStrategy):
             if id in key_landmarks:
                 cv2.circle(img, (cx, cy), 10, (0, 0, 255), cv2.FILLED)
                 cv2.circle(img, (cx, cy), 15, (0, 255, 0), 2)
-                cv2.putText(img, str(int(angle_data)), (cx, cy),
-                            cv2.FONT_HERSHEY_PLAIN, 10, (0, 0, 255))
 
                 if last_coord:
                     cv2.line(img, last_coord, (cx, cy), (0, 255, 0), 2)
                 last_coord = (cx, cy)
 
+        cv2.putText(img, f"Arm Angle: {int(angle_data[0])} degrees",
+                    (50, 50), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 255), 2)
 
 class poseDetector():
 
-    def __init__(self, strategy=None, mode=False, complexity=1, smooth=True, seg=False, smooth_seg=False, detectionCon=0.5, trackCon=0.5):
+    def __init__(self, strategy="curl", mode=False, complexity=1, smooth=True, seg=False, smooth_seg=False, detectionCon=0.5, trackCon=0.5):
         self.strategy = strategy
         self.mode = mode
         self.complexity = complexity

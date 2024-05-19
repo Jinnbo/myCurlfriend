@@ -1,34 +1,54 @@
+body{
+  margin: 0;
+  color: white;
+  font-family: inter;
+}
+
 .App {
   display: grid;
-  grid-template-columns: 250px 1fr 250px; /* Left sidebar, video area, right sidebar */
-  height: 100vh; /* Full height of the viewport */
+  background-color: #18191E;
+  height: 100vh;
 }
 
-.logo {
-  width: 120%; /* Adjusts the width to 80% of its parent container */
-  height: auto; /* Maintains the aspect ratio */
-}
-
-.sidebar {
-  /* background-color: #f4f4f4; */
-  display: flex;
-  flex-direction: column;
-  justify-content: start; /* Adjust if you want different vertical alignment */
-  align-items: center;
-  height: 100%; /* Makes sidebar take full height of its grid area */
-}
-
-.videoContainer {
+.mainContainer{
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 3rem;
 }
 
-.btnContainer {
-  padding: 20px;
+.videoContainer{
+  max-width: 120vh;
+}
+
+.navBar{
+  display: flex;
+  align-items: center;
+  max-height: 10vh;
+  margin-top: 2rem;
+}
+
+.logo{
+  width: 7rem;
+  height: 7rem;
+  margin: 2rem;
+}
+
+.text{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+
+.btnContainer{
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  margin: 10px 0;
+  gap: 5rem;
+}
+
+.personalityContainer,
+.exerciseContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 10rem;
 }

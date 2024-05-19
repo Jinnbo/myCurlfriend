@@ -13,6 +13,9 @@ while True:
         inputtext = input()
         text = text_writer.textWriter(inputtext)
         voice.text_to_speech_file(text,"newrep")
+        inputtext = input()
+        text = text_writer.textWriter(inputtext)
+        voice.text_to_speech_file(text,"halfrep")
 
         
 
