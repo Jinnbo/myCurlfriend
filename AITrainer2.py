@@ -60,7 +60,7 @@ while True:
             audio_thread = threading.Thread(target=audio_player.playAudio, args=("encouragement",))
             audio_thread.start()
             
-
+        
 
         # Draw Bar
         cv2.rectangle(img, (1100, 100), (1175, 650), color, 3)
