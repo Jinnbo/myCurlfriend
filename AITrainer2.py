@@ -16,7 +16,7 @@ startTime = time.time()
 pathname = "curl_angle_count.txt"
 
 with open(pathname, "w") as f:
-    f.write("angle,count,time,delta,change\n")
+    f.write("angle,count,time,delta,change,struggling\n")
 
 while True:
     success, img = cap.read()
@@ -47,13 +47,19 @@ while True:
                 count += 0.5
                 dir = 0
 
-        changed = da.writeToFile(pathname, angle, count, startTime,"bicep")
+        changed, struggling = da.writeToFile(pathname, angle, count, startTime,"bicep")
         
         if changed:
             # audio_player.playAudio()
             print("WE ARE TRYING TO START THREAD AND PLAY AUDIO")
-            audio_thread = threading.Thread(target=audio_player.playAudio())
+            audio_thread = threading.Thread(target=audio_player.playAudio, args=("newrep",))
             audio_thread.start()
+        
+        elif struggling:
+            print("YOU ARE STRUGGLING RIGHT NOW.")
+            audio_thread = threading.Thread(target=audio_player.playAudio, args=("encouragement",))
+            audio_thread.start()
+            
 
 
         # Draw Bar

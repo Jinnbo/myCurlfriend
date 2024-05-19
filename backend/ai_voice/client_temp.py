@@ -9,5 +9,10 @@ while True:
         break
     else:
         text = text_writer.textWriter(inputtext)
-        voice.text_to_speech_file(text)
-        audio_player.playAudio()
+        voice.text_to_speech_file(text,"encouragement")
+        inputtext = input()
+        text = text_writer.textWriter(inputtext)
+        voice.text_to_speech_file(text,"newrep")
+
+        
+

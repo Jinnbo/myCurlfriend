@@ -16,7 +16,7 @@ client = ElevenLabs(
     api_key=ELEVENLABS_API_KEY,
 )
 
-def text_to_speech_file(text: str) -> str:
+def text_to_speech_file(text: str, audiofile: str) -> str:
     # Calling the text_to_speech conversion API with detailed parameters
     response = client.text_to_speech.convert(
         voice_id="AZnzlk1XvdvUeBnXmlld",
@@ -37,7 +37,7 @@ def text_to_speech_file(text: str) -> str:
 
     # Generating a unique file name for the output MP3 file
     # save_file_path = f"{uuid.uuid4()}.mp3"
-    save_file_path = "backend/ai_voice/audio/tempVoice.mp3"
+    save_file_path = f"backend/ai_voice/audio/{audiofile}.mp3"
 
     # Writing the audio to a file
     with open(save_file_path, "wb") as f:
