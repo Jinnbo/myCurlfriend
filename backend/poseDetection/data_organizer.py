@@ -52,7 +52,7 @@ def writeToFile(pathname, angle, count, startTime, exercise):
                     dec_counter == 0
                     break
                 #if at least 10 (half) of the outputs are decreasing, notify the user they did a half rep
-                if dec_counter == 3:
+                if dec_counter == 5:
                     halfrep = True
                     delta = "half rep"
                     break

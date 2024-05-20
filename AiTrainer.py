@@ -7,6 +7,7 @@ from flask_cors import CORS
 from backend.poseDetection import data_organizer as da
 from backend.ai_voice import audio_player
 import threading 
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -83,7 +84,9 @@ def generate_frames():
             if changed:
                 # audio_player.playAudio()
                 print("WE ARE TRYING TO START THREAD AND PLAY AUDIO")
-                audio_thread = threading.Thread(target=audio_player.playAudio, args=("newrep",))
+                newrepaudio = random.choice(["newrep1","newrep2","newrep3"])
+
+                audio_thread = threading.Thread(target=audio_player.playAudio, args=(newrepaudio,))
                 audio_thread.start()
             
             elif struggling:
@@ -92,7 +95,8 @@ def generate_frames():
                 audio_thread.start()
             
             elif halfrep:
-                audio_thread = threading.Thread(target=audio_player.playAudio, args=("halfrep",))
+                halfrepaudio = random.choice(["halfrep"])
+                audio_thread = threading.Thread(target=audio_player.playAudio, args=(halfrepaudio,))
                 audio_thread.start()
 
         ret, buffer = cv2.imencode('.jpg', img)
