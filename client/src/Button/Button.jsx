@@ -2,7 +2,7 @@
 import React from "react";
 import "./style.css";
 
-function AnimeButton({ name, field, onClick, isActive }) {
+function Button({ name, field, onClick, isActive }) {
   const baseStyle = {
     backgroundColor: isActive ? "red" : "#f4f4f4", // Red when active, light gray otherwise
     color: isActive ? "white" : "black", // White text for active, black for inactive
@@ -16,4 +16,4 @@ function AnimeButton({ name, field, onClick, isActive }) {
   );
 }
 
-export default AnimeButton;
+export default Button;

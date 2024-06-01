@@ -1,10 +1,10 @@
 import "./app.css";
-import AnimeButton from "./buttons/anime_button";
+import Button from "./Button/Button";
 import { useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [activeButton, setActiveButton] = useState("");
+  const [activeButton, setActiveButton] = useState("Curl");
 
   const handleButtonClick = (field, name) => {
     setActiveButton(name);
@@ -31,32 +31,20 @@ function App() {
         <div className="sidebar">
           <h2>Settings</h2>
           <div className="btnContainer">
-            {/* <AnimeButton
-              name="Person 1"
-              field="personality"
-              onClick={handleButtonClick}
-              isActive={activeButton === "Person 1"}
-            />
-            <AnimeButton
-              name="Person 2"
-              field="personality"
-              onClick={handleButtonClick}
-              isActive={activeButton === "Person 2"}
-            /> */}
-            <AnimeButton
+            <Button
               name="Curl"
               field="curl"
               onClick={handleButtonClick}
               isActive={activeButton === "Curl"}
             />
-            <AnimeButton
+            <Button
               name="Squat"
               field="squat"
               onClick={handleButtonClick}
               isActive={activeButton === "Squat"}
             />
-            <AnimeButton
-              name="PushUp"
+            <Button
+              name="Push Up"
               field="pushup"
               onClick={handleButtonClick}
               isActive={activeButton === "PushUp"}
