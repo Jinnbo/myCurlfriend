@@ -13,6 +13,9 @@
 </div>
 
 
+https://github.com/Jinnbo/StormHacks/assets/75389217/c792f232-742d-4cbd-ac86-7929f46af5fb
+
+
 ## Inspiration
 
 We know that going to the gym is often hard to initially get into. We hope this project would help introverted individuals feel like they have someone to talk to at the gym and ask for advice
